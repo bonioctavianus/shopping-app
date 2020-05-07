@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">shopping-app</string>
 
+    <!-- Main Navigation Menu -->
+    <string name="nav_menu_home">Home</string>
+    <string name="nav_menu_feed">Feed</string>
+    <string name="nav_menu_cart">Cart</string>
+    <string name="nav_menu_profile">Profile</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
