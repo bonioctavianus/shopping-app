@@ -28,6 +28,7 @@ buildscript {
     ext.material_search_bar_version = '0.8.5'
 
     ext.play_services_auth_version = '18.0.0'
+    ext.facebook_login_version = '5.15.3'
 
     repositories {
         google()

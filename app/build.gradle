@@ -78,4 +78,5 @@ dependencies {
     implementation "com.github.mancj:MaterialSearchBar:$material_search_bar_version"
 
     implementation "com.google.android.gms:play-services-auth:$play_services_auth_version"
+    implementation "com.facebook.android:facebook-login:$facebook_login_version"
 }
