@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">shopping-app</string>
 
+    <string name="facebook_app_id">165290168230815</string>
+    <string name="fb_login_protocol_scheme">fb165290168230815</string>
+
     <!-- Main Navigation Menu -->
     <string name="nav_menu_home">Home</string>
     <string name="nav_menu_feed">Feed</string>
