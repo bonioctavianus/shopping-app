@@ -13,6 +13,7 @@ import com.bonioctavianus.android.shopping_app.ui.base.BaseFragment
 import com.bonioctavianus.android.shopping_app.utils.SingleLiveEvent
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.fragment_home.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -36,8 +37,11 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
     }
 
     override fun intents(): Observable<HomeIntent> {
-        return Observable.just(
-            HomeIntent.GetItems
+        return Observable.merge(
+            Observable.just(
+                HomeIntent.GetItems
+            ),
+            component_home.intents()
         )
     }
 
@@ -48,6 +52,7 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
     override fun observeState(state: MutableLiveData<HomeViewState>) {
         state.observe(viewLifecycleOwner, Observer { value ->
             Timber.d("Received State: $value")
+            component_home.renderState(value)
         })
     }
 

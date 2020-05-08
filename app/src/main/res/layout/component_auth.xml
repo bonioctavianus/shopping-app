@@ -83,7 +83,7 @@
                 android:layout_height="@dimen/default_button_height"
                 android:layout_marginTop="@dimen/default_space"
                 android:text="@string/auth_button_sign_in"
-                android:textSize="@dimen/auth_button_sign_in_text_size"
+                android:textSize="@dimen/default_button_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
 
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_space"
                 android:text="@string/auth_button_facebook_sign_in"
-                android:textSize="@dimen/auth_button_sign_in_text_size"
+                android:textSize="@dimen/default_button_text_size"
                 app:layout_constraintTop_toBottomOf="@id/button_sign_in" />
 
             <com.google.android.gms.common.SignInButton

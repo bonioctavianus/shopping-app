@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="default_small_space">8dp</dimen>
     <dimen name="default_space">16dp</dimen>
 
+    <dimen name="default_list_item_spacing">12dp</dimen>
     <dimen name="default_button_height">53dp</dimen>
+    <dimen name="default_button_text_size">12sp</dimen>
+    <dimen name="default_toolbar_elevation">4dp</dimen>
+    <dimen name="default_cardview_elevation">4dp</dimen>
+    <dimen name="default_cardview_radius">8dp</dimen>
 
     <!-- Auth Screen -->
     <dimen name="auth_card_elevation">2dp</dimen>
@@ -11,5 +17,7 @@
     <dimen name="auth_input_box_stroke_width">0dp</dimen>
     <dimen name="auth_input_edit_padding_top">12dp</dimen>
     <dimen name="auth_input_edit_text_size">14sp</dimen>
-    <dimen name="auth_button_sign_in_text_size">12sp</dimen>
+
+    <!-- Home Screen -->
+    <dimen name="home_category_image_size">75dp</dimen>
 </resources>

@@ -4,6 +4,9 @@
     <string name="facebook_app_id">165290168230815</string>
     <string name="fb_login_protocol_scheme">fb165290168230815</string>
 
+    <!-- Common -->
+    <string name="common_error_retry">Retry</string>
+
     <!-- Auth Screen -->
     <string name="auth_sign_in_title">Login</string>
     <string name="auth_input_email_hint">Email</string>
@@ -17,6 +20,12 @@
     <string name="nav_menu_feed">Feed</string>
     <string name="nav_menu_cart">Cart</string>
     <string name="nav_menu_profile">Profile</string>
+
+    <!-- Home Screen -->
+    <string name="home_image_category_description">Category</string>
+    <string name="home_image_item_description">Item</string>
+    <string name="home_image_favorite_description">Favorite</string>
+    <string name="home_empty_message">No Content</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
