@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_space">16dp</dimen>
+
+    <dimen name="default_button_height">53dp</dimen>
+
+    <!-- Auth Screen -->
+    <dimen name="auth_input_box_radius">8dp</dimen>
+    <dimen name="auth_input_box_stroke_width">0dp</dimen>
+    <dimen name="auth_input_edit_padding_top">12dp</dimen>
+    <dimen name="auth_input_edit_text_size">14sp</dimen>
+    <dimen name="auth_button_sign_in_text_size">12sp</dimen>
+</resources>
