@@ -5,6 +5,8 @@
     <dimen name="default_button_height">53dp</dimen>
 
     <!-- Auth Screen -->
+    <dimen name="auth_card_elevation">2dp</dimen>
+    <dimen name="auth_card_corner_radius">8dp</dimen>
     <dimen name="auth_input_box_radius">8dp</dimen>
     <dimen name="auth_input_box_stroke_width">0dp</dimen>
     <dimen name="auth_input_edit_padding_top">12dp</dimen>

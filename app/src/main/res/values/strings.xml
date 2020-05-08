@@ -10,6 +10,7 @@
     <string name="auth_input_password_hint">Password</string>
     <string name="auth_label_remember_me">Remember Me</string>
     <string name="auth_button_sign_in">Sign In</string>
+    <string name="auth_button_facebook_sign_in">Facebook Sign In</string>
 
     <!-- Main Navigation Menu -->
     <string name="nav_menu_home">Home</string>
