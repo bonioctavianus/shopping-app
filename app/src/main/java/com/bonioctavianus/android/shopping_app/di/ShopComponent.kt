@@ -3,6 +3,7 @@ package com.bonioctavianus.android.shopping_app.di
 import com.bonioctavianus.android.shopping_app.ShopApplication
 import com.bonioctavianus.android.shopping_app.di.network.NetworkModule
 import com.bonioctavianus.android.shopping_app.di.repository.AuthRepositoryModule
+import com.bonioctavianus.android.shopping_app.di.repository.ItemRepositoryModule
 import com.bonioctavianus.android.shopping_app.di.store.StoreModule
 import com.bonioctavianus.android.shopping_app.di.ui.FragmentModule
 import com.bonioctavianus.android.shopping_app.di.user.UserModule
@@ -18,6 +19,7 @@ import javax.inject.Singleton
         StoreModule::class,
         NetworkModule::class,
         AuthRepositoryModule::class,
+        ItemRepositoryModule::class,
         UserModule::class,
         FragmentModule::class
     ]
