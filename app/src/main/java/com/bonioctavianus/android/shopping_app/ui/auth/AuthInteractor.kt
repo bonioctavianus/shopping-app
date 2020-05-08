@@ -1,5 +1,6 @@
 package com.bonioctavianus.android.shopping_app.ui.auth
 
+import com.bonioctavianus.android.shopping_app.usecase.DoEmailSignIn
 import com.bonioctavianus.android.shopping_app.usecase.DoFacebookSignIn
 import com.bonioctavianus.android.shopping_app.usecase.DoGoogleSignIn
 import com.bonioctavianus.android.shopping_app.usecase.Result
@@ -9,7 +10,8 @@ import javax.inject.Inject
 
 class AuthInteractor @Inject constructor(
     private val mDoFacebookSignIn: DoFacebookSignIn,
-    private val mDoGoogleSignIn: DoGoogleSignIn
+    private val mDoGoogleSignIn: DoGoogleSignIn,
+    private val mDoEmailSignIn: DoEmailSignIn
 ) {
     fun compose(): ObservableTransformer<AuthIntent, AuthViewState> {
         return ObservableTransformer { intents ->
@@ -22,13 +24,16 @@ class AuthInteractor @Inject constructor(
                     shared.ofType(AuthIntent.HandleFacebookSignInResult::class.java)
                         .compose(handleFacebookSignInResult),
                     shared.ofType(AuthIntent.HandleGoogleSignInResult::class.java)
-                        .compose(handleGoogleSignInResult)
+                        .compose(handleGoogleSignInResult),
+                    shared.ofType(AuthIntent.DoEmailSignIn::class.java)
+                        .compose(doEmailSignIn)
                 ).mergeWith(
                     shared.filter { intent ->
                         intent !is AuthIntent.DoFacebookSignIn
                                 && intent !is AuthIntent.DoGoogleSignIn
                                 && intent !is AuthIntent.HandleFacebookSignInResult
                                 && intent !is AuthIntent.HandleGoogleSignInResult
+                                && intent !is AuthIntent.DoEmailSignIn
                     }.flatMap { intent ->
                         Observable.error<AuthViewState>(
                             IllegalArgumentException("Unknown intent type: $intent")
@@ -43,7 +48,7 @@ class AuthInteractor @Inject constructor(
         ObservableTransformer<AuthIntent.DoFacebookSignIn, AuthViewState> { intents ->
             intents.flatMap { intent ->
                 mDoFacebookSignIn.signIn(intent.fragment)
-                    .map { AuthViewState.FacebookSignInStarted }
+                    .map { AuthViewState.FacebookSignIn.InFlight }
             }
         }
 
@@ -51,7 +56,7 @@ class AuthInteractor @Inject constructor(
         ObservableTransformer<AuthIntent.DoGoogleSignIn, AuthViewState> { intents ->
             intents.flatMap { intent ->
                 mDoGoogleSignIn.signIn(intent.fragment)
-                    .map { AuthViewState.GoogleSignInStarted }
+                    .map { AuthViewState.GoogleSignIn.InFlight }
             }
         }
 
@@ -93,6 +98,26 @@ class AuthInteractor @Inject constructor(
                             }
                             is Result.Error -> {
                                 AuthViewState.FacebookSignIn.Error(result.throwable)
+                            }
+                        }
+                    }
+            }
+        }
+
+    private val doEmailSignIn =
+        ObservableTransformer<AuthIntent.DoEmailSignIn, AuthViewState> { intents ->
+            intents.flatMap { intent ->
+                mDoEmailSignIn.signIn(intent.email, intent.password)
+                    .map { result ->
+                        when (result) {
+                            is Result.InFlight -> {
+                                AuthViewState.EmailSignIn.InFlight
+                            }
+                            is Result.Success<*> -> {
+                                AuthViewState.EmailSignIn.Success
+                            }
+                            is Result.Error -> {
+                                AuthViewState.EmailSignIn.Error(result.throwable)
                             }
                         }
                     }

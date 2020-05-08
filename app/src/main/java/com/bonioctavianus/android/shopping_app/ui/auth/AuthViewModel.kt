@@ -23,8 +23,9 @@ class AuthViewModel(
                 .subscribe(
                     { value ->
                         when (value) {
-                            is AuthViewState.FacebookSignIn.Success -> mEvent.postValue(value)
-                            is AuthViewState.GoogleSignIn.Success -> mEvent.postValue(value)
+                            is AuthViewState.FacebookSignIn.Success,
+                            is AuthViewState.GoogleSignIn.Success,
+                            is AuthViewState.EmailSignIn.Success -> mEvent.postValue(value)
                             else -> mState.postValue(value)
                         }
                     },

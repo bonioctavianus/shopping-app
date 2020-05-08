@@ -4,9 +4,6 @@ import com.bonioctavianus.android.shopping_app.ui.base.MviViewState
 
 sealed class AuthViewState : MviViewState {
 
-    object FacebookSignInStarted : AuthViewState()
-    object GoogleSignInStarted : AuthViewState()
-
     sealed class FacebookSignIn : AuthViewState() {
         object InFlight : FacebookSignIn()
         object Success : FacebookSignIn()
@@ -17,5 +14,11 @@ sealed class AuthViewState : MviViewState {
         object InFlight : GoogleSignIn()
         object Success : GoogleSignIn()
         data class Error(val throwable: Throwable?) : GoogleSignIn()
+    }
+
+    sealed class EmailSignIn : AuthViewState() {
+        object InFlight : EmailSignIn()
+        object Success : EmailSignIn()
+        data class Error(val throwable: Throwable?) : EmailSignIn()
     }
 }

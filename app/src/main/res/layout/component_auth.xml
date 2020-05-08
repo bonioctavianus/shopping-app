@@ -87,6 +87,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
 
+            <ProgressBar
+                android:id="@+id/progress_bar_sign_in"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintBottom_toBottomOf="@id/button_sign_in"
+                app:layout_constraintEnd_toEndOf="@id/button_sign_in"
+                app:layout_constraintStart_toStartOf="@id/button_sign_in"
+                app:layout_constraintTop_toTopOf="@id/button_sign_in" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_facebook_sign_in"
                 android:layout_width="match_parent"

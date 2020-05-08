@@ -14,4 +14,5 @@ sealed class AuthIntent : MviIntent {
 
     data class DoGoogleSignIn(val fragment: Fragment) : AuthIntent()
     data class HandleGoogleSignInResult(val data: Intent?) : AuthIntent()
+    data class DoEmailSignIn(val email: String, val password: String) : AuthIntent()
 }
