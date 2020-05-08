@@ -8,6 +8,7 @@ import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.utils.loadImage
 import com.bonioctavianus.android.shopping_app.utils.makeVisible
+import com.bonioctavianus.android.shopping_app.utils.showToast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.component_item_detail.view.*
 import kotlinx.android.synthetic.main.toolbar_item_detail.view.*
@@ -53,11 +54,20 @@ class ItemDetailComponent(context: Context, attributeSet: AttributeSet) :
             is ItemDetailViewState.ItemShared -> {
                 mShareItemHandler?.invoke(event.text)
             }
+            is ItemDetailViewState.PurchaseItem.Success -> {
+                showToast(event.message)
+            }
+            is ItemDetailViewState.PurchaseItem.Error -> {
+                showToast(event.throwable?.message)
+            }
         }
     }
 
     fun intents(): Observable<ItemDetailIntent> {
-        return getFavoriteStatusIntent()
+        return Observable.merge(
+            getFavoriteStatusIntent(),
+            getPurchaseItemIntent()
+        )
     }
 
     private fun getFavoriteStatusIntent(): Observable<ItemDetailIntent> {
@@ -66,6 +76,18 @@ class ItemDetailComponent(context: Context, attributeSet: AttributeSet) :
                 mItem?.let {
                     emitter.onNext(
                         ItemDetailIntent.UpdateFavoriteStatus(it)
+                    )
+                }
+            }
+        }
+    }
+
+    private fun getPurchaseItemIntent(): Observable<ItemDetailIntent> {
+        return Observable.create { emitter ->
+            button_purchase.setOnClickListener {
+                mItem?.let {
+                    emitter.onNext(
+                        ItemDetailIntent.PurchaseItem(it)
                     )
                 }
             }

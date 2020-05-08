@@ -23,7 +23,8 @@ class ItemDetailViewModel(
                 .subscribe(
                     { value ->
                         when (value) {
-                            is ItemDetailViewState.ItemShared -> mEvent.postValue(value)
+                            is ItemDetailViewState.ItemShared,
+                            is ItemDetailViewState.PurchaseItem -> mEvent.postValue(value)
                             else -> mState.postValue(value)
                         }
                     },
