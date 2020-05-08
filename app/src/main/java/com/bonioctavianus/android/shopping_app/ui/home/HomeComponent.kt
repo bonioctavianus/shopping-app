@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.view_error.view.*
 class HomeComponent(context: Context, attributeSet: AttributeSet) :
     FrameLayout(context, attributeSet) {
 
+    var mMenuSearchSelectedHandler: (() -> Unit)? = null
+
     init {
         View.inflate(context, R.layout.component_home, this)
     }
@@ -72,6 +74,14 @@ class HomeComponent(context: Context, attributeSet: AttributeSet) :
         view_content.makeGone()
 
         view_error.setErrorMessage(throwable?.message)
+    }
+
+    fun renderEvent(event: HomeViewState) {
+        when (event) {
+            is HomeViewState.MenuSearchSelected -> {
+                mMenuSearchSelectedHandler?.invoke()
+            }
+        }
     }
 
     fun intents(): Observable<HomeIntent> {

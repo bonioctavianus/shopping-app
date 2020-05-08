@@ -15,10 +15,13 @@ class HomeInteractor @Inject constructor(
             intents.publish { shared ->
                 Observable.mergeArray(
                     shared.ofType(HomeIntent.GetItems::class.java)
-                        .compose(getHomeItems)
+                        .compose(getHomeItems),
+                    shared.ofType(HomeIntent.SelectMenuSearch::class.java)
+                        .compose(selectMenuSearch)
                 ).mergeWith(
                     shared.filter { intent ->
                         intent !is HomeIntent.GetItems
+                                && intent !is HomeIntent.SelectMenuSearch
                     }.flatMap { intent ->
                         Observable.error<HomeViewState>(
                             IllegalArgumentException("Unknown intent type: $intent")
@@ -54,6 +57,15 @@ class HomeInteractor @Inject constructor(
                             }
                         }
                     }
+            }
+        }
+
+    private val selectMenuSearch =
+        ObservableTransformer<HomeIntent.SelectMenuSearch, HomeViewState> { intents ->
+            intents.flatMap {
+                Observable.just(
+                    HomeViewState.MenuSearchSelected
+                )
             }
         }
 }

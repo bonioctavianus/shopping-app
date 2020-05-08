@@ -22,7 +22,10 @@ class HomeViewModel(
                 .compose(mInteractor.compose())
                 .subscribe(
                     { value ->
-                        mState.postValue(value)
+                        when (value) {
+                            is HomeViewState.MenuSearchSelected -> mEvent.postValue(value)
+                            else -> mState.postValue(value)
+                        }
                     },
                     { Timber.e(it) }
                 )

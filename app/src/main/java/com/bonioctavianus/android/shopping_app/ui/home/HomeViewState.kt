@@ -13,4 +13,6 @@ sealed class HomeViewState : MviViewState {
         data class Loaded(val categories: List<Category>, val items: List<Item>) : GetHomeItem()
         data class Error(val throwable: Throwable?) : GetHomeItem()
     }
+
+    object MenuSearchSelected : HomeViewState()
 }
