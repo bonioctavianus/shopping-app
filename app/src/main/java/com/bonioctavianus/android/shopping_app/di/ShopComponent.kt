@@ -1,6 +1,7 @@
 package com.bonioctavianus.android.shopping_app.di
 
 import com.bonioctavianus.android.shopping_app.ShopApplication
+import com.bonioctavianus.android.shopping_app.di.network.NetworkModule
 import com.bonioctavianus.android.shopping_app.di.repository.AuthRepositoryModule
 import com.bonioctavianus.android.shopping_app.di.store.StoreModule
 import com.bonioctavianus.android.shopping_app.di.ui.FragmentModule
@@ -15,6 +16,7 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         StoreModule::class,
+        NetworkModule::class,
         AuthRepositoryModule::class,
         UserModule::class,
         FragmentModule::class
