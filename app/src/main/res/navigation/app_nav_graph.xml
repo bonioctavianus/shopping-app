@@ -33,5 +33,13 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/auth_nav_graph" />
+        <action
+            android:id="@+id/action_splash_fragment_to_main_fragment"
+            app:destination="@id/main_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/auth_nav_graph" />
     </fragment>
 </navigation>
