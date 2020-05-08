@@ -3,6 +3,7 @@ package com.bonioctavianus.android.shopping_app
 import android.app.Application
 import com.bonioctavianus.android.shopping_app.di.DaggerShopComponent
 import com.bonioctavianus.android.shopping_app.di.ShopComponent
+import com.facebook.stetho.Stetho
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -20,6 +21,7 @@ class ShopApplication : Application(), HasAndroidInjector {
         super.onCreate()
         initTimber()
         initDependencyGraph()
+        Stetho.initializeWithDefaults(this)
     }
 
     private fun initTimber() {
