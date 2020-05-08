@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app.ui.home
+package com.bonioctavianus.android.shopping_app.ui.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,22 +9,21 @@ import io.reactivex.Observable
 import timber.log.Timber
 import javax.inject.Inject
 
-class HomeViewModel(
-    private val mInteractor: HomeInteractor
-) : BaseViewModel<HomeIntent, HomeViewState>() {
+class ItemDetailViewModel(
+    private val mInteractor: ItemDetailInteractor
+) : BaseViewModel<ItemDetailIntent, ItemDetailViewState>() {
 
-    private val mState: MutableLiveData<HomeViewState> = MutableLiveData()
-    private val mEvent: SingleLiveEvent<HomeViewState> = SingleLiveEvent()
+    private val mState: MutableLiveData<ItemDetailViewState> = MutableLiveData()
+    private val mEvent: SingleLiveEvent<ItemDetailViewState> = SingleLiveEvent()
 
-    override fun bindIntent(intent: Observable<HomeIntent>) {
+    override fun bindIntent(intent: Observable<ItemDetailIntent>) {
         addDisposable(
             intent
                 .compose(mInteractor.compose())
                 .subscribe(
                     { value ->
                         when (value) {
-                            is HomeViewState.MenuSearchSelected,
-                            is HomeViewState.ItemSelected -> mEvent.postValue(value)
+                            is ItemDetailViewState.ItemShared -> mEvent.postValue(value)
                             else -> mState.postValue(value)
                         }
                     },
@@ -33,17 +32,17 @@ class HomeViewModel(
         )
     }
 
-    override fun state(): MutableLiveData<HomeViewState> = mState
+    override fun state(): MutableLiveData<ItemDetailViewState> = mState
 
-    override fun event(): SingleLiveEvent<HomeViewState>? = mEvent
+    override fun event(): SingleLiveEvent<ItemDetailViewState>? = mEvent
 }
 
-class HomeViewModelFactory @Inject constructor(
-    private val mInteractor: HomeInteractor
+class ItemDetailViewModelFactory @Inject constructor(
+    private val mInteractor: ItemDetailInteractor
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(HomeInteractor::class.java)
+        return modelClass.getConstructor(ItemDetailInteractor::class.java)
             .newInstance(mInteractor)
     }
 }

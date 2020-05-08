@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.ui.widget.VerticalItemDecorator
+import io.reactivex.Observable
 
 class ItemList(context: Context, attributeSet: AttributeSet) : RecyclerView(context, attributeSet) {
 
@@ -28,4 +29,6 @@ class ItemList(context: Context, attributeSet: AttributeSet) : RecyclerView(cont
     fun submitItems(items: List<Item>) {
         mAdapter.submitItems(items)
     }
+
+    fun intents(): Observable<ItemAdapter.Intent> = mAdapter.intents()
 }

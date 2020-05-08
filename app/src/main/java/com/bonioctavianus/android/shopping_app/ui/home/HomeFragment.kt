@@ -96,5 +96,9 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
         component_home.mMenuSearchSelectedHandler = {
             mNavigator.navigateToSearchFragment(this)
         }
+
+        component_home.mItemSelectedHandler = { item ->
+            mNavigator.navigateToItemDetailFragment(this, item)
+        }
     }
 }

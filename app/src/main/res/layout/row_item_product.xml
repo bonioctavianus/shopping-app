@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="@dimen/default_space">
 
         <ImageView
@@ -18,7 +19,7 @@
             android:layout_height="0dp"
             android:contentDescription="@string/home_image_item_description"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="5:3"
+            app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/ic_launcher" />
 

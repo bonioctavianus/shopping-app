@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Category
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.ui.list.item.ItemAdapter
 import com.bonioctavianus.android.shopping_app.utils.makeGone
 import com.bonioctavianus.android.shopping_app.utils.makeVisible
 import com.jakewharton.rxbinding3.view.clicks
@@ -90,21 +89,7 @@ class HomeComponent(context: Context, attributeSet: AttributeSet) :
     }
 
     fun intents(): Observable<HomeIntent> {
-        return Observable.merge(
-            getItemListIntent(),
-            getRetryErrorIntent()
-        )
-    }
-    
-    private fun getItemListIntent(): Observable<HomeIntent> {
-        return list_item.intents()
-            .map { intent ->
-                when (intent) {
-                    is ItemAdapter.Intent.SelectItem -> {
-                        HomeIntent.SelectItem(intent.item)
-                    }
-                }
-            }
+        return getRetryErrorIntent()
     }
 
     private fun getRetryErrorIntent(): Observable<HomeIntent> {

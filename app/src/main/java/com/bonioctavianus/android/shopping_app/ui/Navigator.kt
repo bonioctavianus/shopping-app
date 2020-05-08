@@ -1,6 +1,7 @@
 package com.bonioctavianus.android.shopping_app.ui
 
 import androidx.navigation.fragment.findNavController
+import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.ui.auth.AuthFragment
 import com.bonioctavianus.android.shopping_app.ui.auth.AuthFragmentDirections
 import com.bonioctavianus.android.shopping_app.ui.home.HomeFragment
@@ -28,6 +29,11 @@ class Navigator @Inject constructor() {
 
     fun navigateToSearchFragment(fragment: HomeFragment) {
         val direction = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+        fragment.findNavController().navigate(direction)
+    }
+
+    fun navigateToItemDetailFragment(fragment: HomeFragment, item: Item) {
+        val direction = HomeFragmentDirections.actionHomeFragmentToItemDetailFragment(item)
         fragment.findNavController().navigate(direction)
     }
 }

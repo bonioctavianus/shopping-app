@@ -15,4 +15,5 @@ sealed class HomeViewState : MviViewState {
     }
 
     object MenuSearchSelected : HomeViewState()
+    data class ItemSelected(val item: Item) : HomeViewState()
 }

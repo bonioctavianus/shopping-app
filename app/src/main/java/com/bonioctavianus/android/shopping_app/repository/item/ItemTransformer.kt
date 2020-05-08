@@ -23,7 +23,7 @@ class ItemTransformer @Inject constructor() {
                     title = it.title ?: "",
                     description = it.description ?: "",
                     price = it.price ?: "",
-                    isLiked = it.isLiked == 1,
+                    isFavorite = it.isLiked == 1,
                     imageUrl = it.imageUrl ?: ""
                 )
             } ?: emptyList()
