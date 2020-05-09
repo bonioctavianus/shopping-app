@@ -3,6 +3,10 @@ buildscript {
 
     ext.mockito_core_version = '3.3.0'
     ext.mockk_version = '1.9.3'
+    ext.androidx_junit_version = '1.1.1'
+    ext.espresso_core_version = '3.2.0'
+    ext.mockito_android_version = '3.3.0'
+    ext.fragment_testing_version = '1.2.4'
 
     ext.appcompat_version = '1.1.0'
     ext.core_ktx_version = '1.2.0'
