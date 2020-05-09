@@ -9,5 +9,7 @@ class SchedulerPool @Inject constructor() {
 
     fun io(): Scheduler = Schedulers.io()
 
+    fun computation(): Scheduler = Schedulers.computation()
+
     fun ui(): Scheduler = AndroidSchedulers.mainThread()
 }
