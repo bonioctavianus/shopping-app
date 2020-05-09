@@ -4,6 +4,7 @@ import com.bonioctavianus.android.shopping_app.ui.auth.AuthFragment
 import com.bonioctavianus.android.shopping_app.ui.detail.ItemDetailFragment
 import com.bonioctavianus.android.shopping_app.ui.home.HomeFragment
 import com.bonioctavianus.android.shopping_app.ui.profile.ProfileFragment
+import com.bonioctavianus.android.shopping_app.ui.search.SearchFragment
 import com.bonioctavianus.android.shopping_app.ui.splash.SplashFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -25,4 +26,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector(modules = [ProfileModule::class])
     abstract fun contributeProfileFragment(): ProfileFragment
+
+    @ContributesAndroidInjector(modules = [SearchModule::class])
+    abstract fun contributeSearchFragment(): SearchFragment
 }

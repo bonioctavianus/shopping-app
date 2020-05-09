@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/default_toolbar_elevation"
+        android:paddingStart="@dimen/default_small_space"
+        android:paddingEnd="@dimen/default_small_space"
+        android:paddingBottom="@dimen/default_small_space">
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/search_bar"
+            style="@style/MaterialSearchBarLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mt_maxSuggestionsCount="0"
+            app:mt_navIconEnabled="false"
+            app:mt_placeholder="" />
+
+    </androidx.appcompat.widget.Toolbar>
+</merge>

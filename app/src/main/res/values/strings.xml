@@ -35,6 +35,9 @@
     <!-- Profile Screen -->
     <string name="profile_empty_purchase_message">No Purchased Items</string>
 
+    <!-- Search Screen -->
+    <string name="search_empty_message">No Items</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app.ui.home
+package com.bonioctavianus.android.shopping_app.ui.search
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,25 +9,24 @@ import io.reactivex.Observable
 import timber.log.Timber
 import javax.inject.Inject
 
-class HomeViewModel(
-    private val mInteractor: HomeInteractor
-) : BaseViewModel<HomeIntent, HomeViewState>() {
+class SearchViewModel(
+    private val mInteractor: SearchInteractor
+) : BaseViewModel<SearchIntent, SearchViewState>() {
 
-    private val mState: MutableLiveData<HomeViewState> = MutableLiveData()
-    private val mEvent: SingleLiveEvent<HomeViewState> = SingleLiveEvent()
+    private val mState: MutableLiveData<SearchViewState> = MutableLiveData()
+    private val mEvent: SingleLiveEvent<SearchViewState> = SingleLiveEvent()
 
     var mRunning: Boolean = false
         private set
 
-    override fun bindIntent(intent: Observable<HomeIntent>) {
+    override fun bindIntent(intent: Observable<SearchIntent>) {
         addDisposable(
             intent
                 .compose(mInteractor.compose())
                 .subscribe(
                     { value ->
                         when (value) {
-                            is HomeViewState.MenuSearchSelected,
-                            is HomeViewState.ItemSelected -> mEvent.postValue(value)
+                            is SearchViewState.ItemSelected -> mEvent.postValue(value)
                             else -> mState.postValue(value)
                         }
                         mRunning = true
@@ -37,17 +36,17 @@ class HomeViewModel(
         )
     }
 
-    override fun state(): MutableLiveData<HomeViewState> = mState
+    override fun state(): MutableLiveData<SearchViewState> = mState
 
-    override fun event(): SingleLiveEvent<HomeViewState>? = mEvent
+    override fun event(): SingleLiveEvent<SearchViewState>? = mEvent
 }
 
-class HomeViewModelFactory @Inject constructor(
-    private val mInteractor: HomeInteractor
+class SearchViewModelFactory @Inject constructor(
+    private val mInteractor: SearchInteractor
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(HomeInteractor::class.java)
+        return modelClass.getConstructor(SearchInteractor::class.java)
             .newInstance(mInteractor)
     }
 }

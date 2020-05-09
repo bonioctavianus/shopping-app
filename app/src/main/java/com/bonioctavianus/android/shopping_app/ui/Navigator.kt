@@ -8,6 +8,8 @@ import com.bonioctavianus.android.shopping_app.ui.home.HomeFragment
 import com.bonioctavianus.android.shopping_app.ui.home.HomeFragmentDirections
 import com.bonioctavianus.android.shopping_app.ui.profile.ProfileFragment
 import com.bonioctavianus.android.shopping_app.ui.profile.ProfileFragmentDirections
+import com.bonioctavianus.android.shopping_app.ui.search.SearchFragment
+import com.bonioctavianus.android.shopping_app.ui.search.SearchFragmentDirections
 import com.bonioctavianus.android.shopping_app.ui.splash.SplashFragment
 import com.bonioctavianus.android.shopping_app.ui.splash.SplashFragmentDirections
 import javax.inject.Inject
@@ -41,6 +43,11 @@ class Navigator @Inject constructor() {
 
     fun navigateToItemDetailFragment(fragment: ProfileFragment, item: Item) {
         val direction = ProfileFragmentDirections.actionProfileFragmentToItemDetailFragment(item)
+        fragment.findNavController().navigate(direction)
+    }
+
+    fun navigateToItemDetailFragment(fragment: SearchFragment, item: Item) {
+        val direction = SearchFragmentDirections.actionSearchFragmentToItemDetailFragment(item)
         fragment.findNavController().navigate(direction)
     }
 }

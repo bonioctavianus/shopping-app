@@ -48,12 +48,20 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
 
     override fun intents(): Observable<HomeIntent> {
         return Observable.merge(
-            Observable.just(
-                HomeIntent.GetItems
-            ),
+            getGetItemsIntent(),
             component_home.intents(),
             mSubject.hide()
         )
+    }
+
+    private fun getGetItemsIntent(): Observable<HomeIntent> {
+        return if (!mViewModel.mRunning) {
+            Observable.just(
+                HomeIntent.GetItems
+            )
+        } else {
+            Observable.never()
+        }
     }
 
     override fun bindIntent(intent: Observable<HomeIntent>) {
