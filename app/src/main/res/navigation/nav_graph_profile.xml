@@ -22,5 +22,9 @@
         android:id="@+id/item_detail_fragment"
         android:name="com.bonioctavianus.android.shopping_app.ui.detail.ItemDetailFragment"
         android:label="fragment_item_detail"
-        tools:layout="@layout/fragment_item_detail" />
+        tools:layout="@layout/fragment_item_detail" >
+        <argument
+            android:name="item"
+            app:argType="com.bonioctavianus.android.shopping_app.model.Item" />
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app.ui.list.item
+package com.bonioctavianus.android.shopping_app.ui.list.item.v1
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,7 +12,8 @@ import io.reactivex.Observable
 class ItemList(context: Context, attributeSet: AttributeSet) : RecyclerView(context, attributeSet) {
 
     private val mLayoutManager = LinearLayoutManager(context)
-    private val mAdapter = ItemAdapter()
+    private val mAdapter =
+        ItemAdapter()
 
     init {
         layoutManager = mLayoutManager

@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false" />
 
-                <com.bonioctavianus.android.shopping_app.ui.list.item.ItemList
+                <com.bonioctavianus.android.shopping_app.ui.list.item.v1.ItemList
                     android:id="@+id/list_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

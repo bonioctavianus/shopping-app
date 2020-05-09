@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app.ui.list.item
+package com.bonioctavianus.android.shopping_app.ui.list.item.v1
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

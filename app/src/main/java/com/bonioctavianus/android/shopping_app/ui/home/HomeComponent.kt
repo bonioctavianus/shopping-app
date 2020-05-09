@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Category
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.ui.list.item.ItemAdapter
+import com.bonioctavianus.android.shopping_app.ui.list.item.v1.ItemAdapter
 import com.bonioctavianus.android.shopping_app.utils.makeGone
 import com.bonioctavianus.android.shopping_app.utils.makeVisible
 import com.jakewharton.rxbinding3.view.clicks
