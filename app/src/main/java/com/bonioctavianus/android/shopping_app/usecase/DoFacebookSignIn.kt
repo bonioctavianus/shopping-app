@@ -25,7 +25,7 @@ class DoFacebookSignIn @Inject constructor(
             .map { result ->
                 when {
                     result.userId != null -> Result.Success(Unit)
-                    else -> Result.Error(RuntimeException(result.error))
+                    else -> Result.Error(result.throwable)
                 }
             }
     }

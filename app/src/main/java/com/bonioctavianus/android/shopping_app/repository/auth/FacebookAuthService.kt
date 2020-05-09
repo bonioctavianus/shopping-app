@@ -32,19 +32,25 @@ class FacebookAuthService @Inject constructor(
                 .registerCallback(mCallbackManager, object : FacebookCallback<LoginResult> {
                     override fun onSuccess(result: LoginResult?) {
                         emitter.onNext(
-                            FacebookSignInResult(userId = Profile.getCurrentProfile().id)
+                            FacebookSignInResult(
+                                userId = Profile.getCurrentProfile().id
+                            )
                         )
                     }
 
                     override fun onCancel() {
                         emitter.onNext(
-                            FacebookSignInResult(error = "Operation cancelled")
+                            FacebookSignInResult(
+                                throwable = RuntimeException("Operation cancelled")
+                            )
                         )
                     }
 
                     override fun onError(error: FacebookException?) {
                         emitter.onNext(
-                            FacebookSignInResult(error = error?.message)
+                            FacebookSignInResult(
+                                throwable = RuntimeException(error?.message)
+                            )
                         )
                     }
                 })
@@ -62,5 +68,5 @@ class FacebookAuthService @Inject constructor(
 
 data class FacebookSignInResult(
     val userId: String? = null,
-    val error: String? = null
+    val throwable: Throwable? = null
 )
