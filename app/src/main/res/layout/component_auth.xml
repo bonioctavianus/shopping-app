@@ -22,12 +22,10 @@
 
             <TextView
                 android:id="@+id/text_title"
+                style="@style/AuthTextTitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/auth_sign_in_title"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -39,13 +37,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_text_email"
+                    style="@style/AuthInputTextEmailStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/auth_input_email_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textSize="@dimen/auth_input_edit_text_size" />
+                    android:hint="@string/auth_input_email_hint" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,13 +53,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_text_password"
+                    style="@style/AuthInputTextPasswordStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/auth_input_password_hint"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textSize="@dimen/auth_input_edit_text_size" />
+                    android:hint="@string/auth_input_password_hint" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_space"
                 android:text="@string/auth_label_remember_me"
+                android:textColor="@color/colorTextPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
 
@@ -89,8 +82,8 @@
 
             <ProgressBar
                 android:id="@+id/progress_bar_sign_in"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/default_progress_bar_size"
+                android:layout_height="@dimen/default_progress_bar_size"
                 app:layout_constraintBottom_toBottomOf="@id/button_sign_in"
                 app:layout_constraintEnd_toEndOf="@id/button_sign_in"
                 app:layout_constraintStart_toStartOf="@id/button_sign_in"

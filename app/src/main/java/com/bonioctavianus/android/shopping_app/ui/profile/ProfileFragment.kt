@@ -16,6 +16,7 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import javax.inject.Inject
 
 class ProfileFragment : BaseFragment<ProfileIntent, ProfileViewState>() {
@@ -41,6 +42,7 @@ class ProfileFragment : BaseFragment<ProfileIntent, ProfileViewState>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.toolbar.setTitle(R.string.nav_menu_profile)
         initActionMenu()
         initEventHandler()
     }

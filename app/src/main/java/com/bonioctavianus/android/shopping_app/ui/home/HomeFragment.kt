@@ -16,6 +16,7 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -42,6 +43,7 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.toolbar.setTitle(R.string.nav_menu_home)
         initActionMenu()
         initEventHandler()
     }

@@ -23,11 +23,10 @@
 
             <TextView
                 android:id="@+id/text_title"
+                style="@style/ItemDetailTextTitleStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/default_space"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@id/image_favorite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -45,11 +44,10 @@
 
             <TextView
                 android:id="@+id/text_description"
+                style="@style/ItemDetailTextDescriptionStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_space"
-                android:lineSpacingExtra="8dp"
-                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/text_title"
                 tools:text="The Quick Brown Fox Jumps Over The Lazy Dog" />
 
@@ -65,10 +63,10 @@
 
             <TextView
                 android:id="@+id/text_item_price"
+                style="@style/ItemDetailTextPriceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/default_space"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/button_purchase"
                 app:layout_constraintEnd_toStartOf="@id/button_purchase"
                 app:layout_constraintTop_toTopOf="@id/button_purchase"
