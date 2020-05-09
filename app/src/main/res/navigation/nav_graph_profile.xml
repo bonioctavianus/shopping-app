@@ -9,7 +9,7 @@
         android:id="@+id/profile_fragment"
         android:name="com.bonioctavianus.android.shopping_app.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profile_fragment_to_item_detail_fragment"
             app:destination="@id/item_detail_fragment"
@@ -18,13 +18,15 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    
     <fragment
         android:id="@+id/item_detail_fragment"
         android:name="com.bonioctavianus.android.shopping_app.ui.detail.ItemDetailFragment"
         android:label="fragment_item_detail"
-        tools:layout="@layout/fragment_item_detail" >
+        tools:layout="@layout/fragment_item_detail">
         <argument
             android:name="item"
             app:argType="com.bonioctavianus.android.shopping_app.model.Item" />
     </fragment>
+
 </navigation>

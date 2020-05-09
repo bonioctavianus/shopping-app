@@ -6,4 +6,5 @@ import com.bonioctavianus.android.shopping_app.ui.base.MviIntent
 sealed class ProfileIntent : MviIntent {
     object GetPurchasedItems : ProfileIntent()
     data class SelectItem(val item: Item) : ProfileIntent()
+    object SelectMenuSignOut : ProfileIntent()
 }

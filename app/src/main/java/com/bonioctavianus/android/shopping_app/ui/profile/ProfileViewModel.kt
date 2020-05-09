@@ -23,7 +23,9 @@ class ProfileViewModel(
                 .subscribe(
                     { value ->
                         when (value) {
-                            is ProfileViewState.ItemSelected -> mEvent.postValue(value)
+                            is ProfileViewState.ItemSelected,
+                            is ProfileViewState.SignOut.Success,
+                            is ProfileViewState.SignOut.Error -> mEvent.postValue(value)
                             else -> mState.postValue(value)
                         }
                     },

@@ -24,7 +24,7 @@
         android:id="@+id/splash_fragment"
         android:name="com.bonioctavianus.android.shopping_app.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splash_fragment_to_auth_fragment"
             app:destination="@id/auth_fragment"
@@ -42,4 +42,5 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/auth_nav_graph" />
     </fragment>
+
 </navigation>

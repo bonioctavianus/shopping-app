@@ -15,4 +15,8 @@ class UserServiceV1(private val mStore: ShopStore) : UserService {
     override fun isUserSignedIn(): Boolean {
         return mStore.getString(KEY_USER_ID, "").isNotEmpty()
     }
+
+    override fun clearUser() {
+        mStore.putString(KEY_USER_ID, "")
+    }
 }

@@ -1,5 +1,6 @@
 package com.bonioctavianus.android.shopping_app.ui
 
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.ui.auth.AuthFragment
@@ -49,5 +50,14 @@ class Navigator @Inject constructor() {
     fun navigateToItemDetailFragment(fragment: SearchFragment, item: Item) {
         val direction = SearchFragmentDirections.actionSearchFragmentToItemDetailFragment(item)
         fragment.findNavController().navigate(direction)
+    }
+
+    fun navigateToMainActivity(fragment: ProfileFragment) {
+        fragment.requireActivity().let {
+            it.startActivity(
+                Intent(it, MainActivity::class.java)
+            )
+            it.finish()
+        }
     }
 }

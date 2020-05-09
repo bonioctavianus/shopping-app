@@ -2,13 +2,11 @@ package com.bonioctavianus.android.shopping_app.repository.auth
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.Profile
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
 import javax.inject.Inject
 
 class FacebookAuthService @Inject constructor(
@@ -31,11 +29,7 @@ class FacebookAuthService @Inject constructor(
             LoginManager.getInstance()
                 .registerCallback(mCallbackManager, object : FacebookCallback<LoginResult> {
                     override fun onSuccess(result: LoginResult?) {
-                        emitter.onNext(
-                            FacebookSignInResult(
-                                userId = Profile.getCurrentProfile().id
-                            )
-                        )
+                        handleLoginSuccess(emitter)
                     }
 
                     override fun onCancel() {
@@ -49,13 +43,36 @@ class FacebookAuthService @Inject constructor(
                     override fun onError(error: FacebookException?) {
                         emitter.onNext(
                             FacebookSignInResult(
-                                throwable = RuntimeException(error?.message)
+                                throwable = RuntimeException(error?.message ?: "Unknown error")
                             )
                         )
                     }
                 })
 
             mCallbackManager.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    private fun handleLoginSuccess(emitter: ObservableEmitter<FacebookSignInResult>) {
+        val userId = Profile.getCurrentProfile()?.id
+
+        if (userId == null) {
+            object : ProfileTracker() {
+                override fun onCurrentProfileChanged(
+                    oldProfile: Profile?,
+                    currentProfile: Profile?
+                ) {
+                    this.stopTracking()
+                    emitter.onNext(
+                        FacebookSignInResult(userId = currentProfile?.id)
+                    )
+                }
+            }
+
+        } else {
+            emitter.onNext(
+                FacebookSignInResult(userId = userId)
+            )
         }
     }
 

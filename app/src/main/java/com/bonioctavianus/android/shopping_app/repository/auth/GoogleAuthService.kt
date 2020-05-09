@@ -32,7 +32,7 @@ class GoogleAuthService @Inject constructor(
 
             } catch (exception: ApiException) {
                 GoogleSignInResult(
-                    throwable = RuntimeException(exception.message)
+                    throwable = RuntimeException(exception.message ?: "Unknown error")
                 )
             }
         }

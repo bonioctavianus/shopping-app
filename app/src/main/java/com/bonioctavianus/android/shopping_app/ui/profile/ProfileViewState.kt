@@ -13,4 +13,10 @@ sealed class ProfileViewState : MviViewState {
     }
 
     data class ItemSelected(val item: Item) : ProfileViewState()
+
+    sealed class SignOut : ProfileViewState() {
+        object InFlight : SignOut()
+        object Success : SignOut()
+        data class Error(val throwable: Throwable?) : SignOut()
+    }
 }
