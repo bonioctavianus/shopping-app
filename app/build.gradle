@@ -43,6 +43,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$mockito_core_version"
+    testImplementation "android.arch.core:core-testing:$arch_core_testing_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -53,7 +55,6 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
-    testImplementation "android.arch.core:core-testing:$arch_core_testing_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_version"
