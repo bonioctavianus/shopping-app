@@ -15,7 +15,6 @@ import com.bonioctavianus.android.shopping_app.utils.SingleLiveEvent
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_search.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment<SearchIntent, SearchViewState>() {
@@ -58,14 +57,12 @@ class SearchFragment : BaseFragment<SearchIntent, SearchViewState>() {
 
     override fun observeState(state: MutableLiveData<SearchViewState>) {
         state.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received State: $value")
             component_search.renderState(value)
         })
     }
 
     override fun observeEvent(event: SingleLiveEvent<SearchViewState>?) {
         event?.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received Event: $value")
             component_search.renderEvent(value)
         })
     }

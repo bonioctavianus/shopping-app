@@ -17,7 +17,6 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.view.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
@@ -72,14 +71,12 @@ class HomeFragment : BaseFragment<HomeIntent, HomeViewState>() {
 
     override fun observeState(state: MutableLiveData<HomeViewState>) {
         state.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received State: $value")
             component_home.renderState(value)
         })
     }
 
     override fun observeEvent(event: SingleLiveEvent<HomeViewState>?) {
         event?.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received Event: $value")
             component_home.renderEvent(value)
         })
     }

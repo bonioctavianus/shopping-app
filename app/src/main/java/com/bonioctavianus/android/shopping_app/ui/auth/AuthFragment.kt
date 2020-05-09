@@ -17,7 +17,6 @@ import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_auth.*
-import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -62,14 +61,12 @@ class AuthFragment : BaseFragment<AuthIntent, AuthViewState>() {
 
     override fun observeState(state: MutableLiveData<AuthViewState>) {
         state.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received Value: $value")
             component_auth.renderState(value)
         })
     }
 
     override fun observeEvent(event: SingleLiveEvent<AuthViewState>?) {
         event?.observe(viewLifecycleOwner, Observer { value ->
-            Timber.d("Received Event: $value")
             component_auth.renderEvent(value)
         })
     }
