@@ -31,7 +31,9 @@ class GoogleAuthService @Inject constructor(
                 GoogleSignInResult(userId = account?.id)
 
             } catch (exception: ApiException) {
-                GoogleSignInResult(error = exception.message)
+                GoogleSignInResult(
+                    throwable = RuntimeException(exception.message)
+                )
             }
         }
     }
@@ -46,5 +48,5 @@ class GoogleAuthService @Inject constructor(
 
 data class GoogleSignInResult(
     val userId: String? = null,
-    val error: String? = null
+    val throwable: Throwable? = null
 )
