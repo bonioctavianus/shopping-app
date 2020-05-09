@@ -35,6 +35,8 @@ class ItemDetailComponent(context: Context, attributeSet: AttributeSet) :
 
     private fun renderItem(item: Item) {
         view_content.makeVisible()
+        // fix nested scrollview not scrolling to top when switching tabs (bottom navigation)
+        view_content.post { view_content.scrollTo(0, 0) }
 
         with(item) {
             image_item.loadImage(imageUrl)
