@@ -5,7 +5,7 @@ import com.bonioctavianus.android.shopping_app.repository.item.ItemRepository
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetHomeItems @Inject constructor(
+class GetHomeItem @Inject constructor(
     private val mRepository: ItemRepository,
     private val mScheduler: SchedulerPool
 ) {

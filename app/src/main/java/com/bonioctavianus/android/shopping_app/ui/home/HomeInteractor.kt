@@ -1,14 +1,14 @@
 package com.bonioctavianus.android.shopping_app.ui.home
 
 import com.bonioctavianus.android.shopping_app.model.Home
-import com.bonioctavianus.android.shopping_app.usecase.GetHomeItems
+import com.bonioctavianus.android.shopping_app.usecase.GetHomeItem
 import com.bonioctavianus.android.shopping_app.usecase.Result
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import javax.inject.Inject
 
 class HomeInteractor @Inject constructor(
-    private val mGetHomeItems: GetHomeItems
+    private val mGetHomeItem: GetHomeItem
 ) {
     fun compose(): ObservableTransformer<HomeIntent, HomeViewState> {
         return ObservableTransformer { intents ->
@@ -38,7 +38,7 @@ class HomeInteractor @Inject constructor(
     private val getHomeItems =
         ObservableTransformer<HomeIntent.GetItems, HomeViewState> { intents ->
             intents.flatMap {
-                mGetHomeItems.getItems()
+                mGetHomeItem.getItems()
                     .map { result ->
                         when (result) {
                             is Result.InFlight -> {
