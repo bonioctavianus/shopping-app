@@ -1,17 +1,17 @@
 package com.bonioctavianus.android.shopping_app.repository.purchase
 
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.utils.TimeUtilities
+import com.bonioctavianus.android.shopping_app.utils.TimeHelper
 import javax.inject.Inject
 
 class PurchaseTransformer @Inject constructor(
-    private val mTimeUtilities: TimeUtilities
+    private val mTimeHelper: TimeHelper
 ) {
 
     fun transform(item: Item): ItemEntity {
         with(item) {
             return ItemEntity(
-                timestamp = mTimeUtilities.getCurrentTime(),
+                timestamp = mTimeHelper.getCurrentTime(),
                 id = id,
                 title = title,
                 description = description,

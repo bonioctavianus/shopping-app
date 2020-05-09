@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.utils.loadImage
+import com.bonioctavianus.android.shopping_app.extensions.loadImage
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.row_item_product.view.*

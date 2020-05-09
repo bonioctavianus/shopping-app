@@ -7,8 +7,8 @@ import android.widget.FrameLayout
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.ui.list.item.v2.ItemAdapterV2
-import com.bonioctavianus.android.shopping_app.utils.makeGone
-import com.bonioctavianus.android.shopping_app.utils.makeVisible
+import com.bonioctavianus.android.shopping_app.extensions.makeGone
+import com.bonioctavianus.android.shopping_app.extensions.makeVisible
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.component_profile.view.*

@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentActivity
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
 import com.bonioctavianus.android.shopping_app.ui.list.item.v2.ItemAdapterV2
-import com.bonioctavianus.android.shopping_app.utils.hideSoftKeyboard
-import com.bonioctavianus.android.shopping_app.utils.makeGone
-import com.bonioctavianus.android.shopping_app.utils.makeVisible
+import com.bonioctavianus.android.shopping_app.extensions.hideSoftKeyboard
+import com.bonioctavianus.android.shopping_app.extensions.makeGone
+import com.bonioctavianus.android.shopping_app.extensions.makeVisible
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.afterTextChangeEvents
 import com.mancj.materialsearchbar.MaterialSearchBar
@@ -141,7 +141,9 @@ class SearchComponent(context: Context, attributeSet: AttributeSet) :
     }
 
     private fun clearSearchFocus() {
-        hideSoftKeyboard(mActivity)
+        hideSoftKeyboard(
+            mActivity
+        )
         search_bar.searchEditText.clearFocus()
     }
 }

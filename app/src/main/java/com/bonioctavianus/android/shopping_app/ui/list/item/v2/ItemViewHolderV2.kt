@@ -3,7 +3,7 @@ package com.bonioctavianus.android.shopping_app.ui.list.item.v2
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.utils.loadImage
+import com.bonioctavianus.android.shopping_app.extensions.loadImage
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.row_item_product_v2.view.*

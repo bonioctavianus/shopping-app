@@ -3,7 +3,7 @@ package com.bonioctavianus.android.shopping_app.ui.list.category
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bonioctavianus.android.shopping_app.model.Category
-import com.bonioctavianus.android.shopping_app.utils.loadImage
+import com.bonioctavianus.android.shopping_app.extensions.loadImage
 import kotlinx.android.synthetic.main.row_item_category.view.*
 
 class CategoryViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

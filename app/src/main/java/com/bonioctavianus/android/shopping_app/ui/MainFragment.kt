@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app
+package com.bonioctavianus.android.shopping_app.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.extensions.setupWithNavController
 import kotlinx.android.synthetic.main.fragment_main.*
 

@@ -6,9 +6,9 @@ import android.view.View
 import android.widget.FrameLayout
 import com.bonioctavianus.android.shopping_app.R
 import com.bonioctavianus.android.shopping_app.model.Item
-import com.bonioctavianus.android.shopping_app.utils.loadImage
-import com.bonioctavianus.android.shopping_app.utils.makeVisible
-import com.bonioctavianus.android.shopping_app.utils.showToast
+import com.bonioctavianus.android.shopping_app.extensions.loadImage
+import com.bonioctavianus.android.shopping_app.extensions.makeVisible
+import com.bonioctavianus.android.shopping_app.extensions.showToast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.component_item_detail.view.*
 import kotlinx.android.synthetic.main.toolbar_item_detail.view.*

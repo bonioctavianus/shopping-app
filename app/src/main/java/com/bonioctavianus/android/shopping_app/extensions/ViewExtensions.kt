@@ -1,4 +1,4 @@
-package com.bonioctavianus.android.shopping_app.utils
+package com.bonioctavianus.android.shopping_app.extensions
 
 import android.content.Context
 import android.view.View
@@ -24,7 +24,7 @@ fun View.showToast(message: String?) {
 }
 
 fun ImageView.loadImage(url: String?) {
-    loadImage(context, url, this)
+    com.bonioctavianus.android.shopping_app.utils.loadImage(context, url, this)
 }
 
 fun hideSoftKeyboard(activity: FragmentActivity?) {

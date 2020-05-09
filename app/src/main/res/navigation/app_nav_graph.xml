@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.bonioctavianus.android.shopping_app.MainFragment"
+        android:name="com.bonioctavianus.android.shopping_app.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment

@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.bonioctavianus.android.shopping_app.R
-import com.bonioctavianus.android.shopping_app.utils.makeInvisible
-import com.bonioctavianus.android.shopping_app.utils.makeVisible
+import com.bonioctavianus.android.shopping_app.extensions.makeInvisible
+import com.bonioctavianus.android.shopping_app.extensions.makeVisible
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.component_auth.view.*
