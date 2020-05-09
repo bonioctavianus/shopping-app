@@ -7,7 +7,8 @@ import com.bonioctavianus.android.shopping_app.repository.purchase.ItemEntity.Co
 
 @Entity(tableName = TABLE_NAME)
 data class ItemEntity(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val timestamp: Long,
+    @ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "price") val price: String,

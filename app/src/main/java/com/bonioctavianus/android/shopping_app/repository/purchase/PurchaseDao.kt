@@ -13,7 +13,7 @@ interface PurchaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(item: ItemEntity): Maybe<Long>
 
-    @Query(value = "SELECT * FROM $TABLE_NAME")
+    @Query(value = "SELECT * FROM $TABLE_NAME ORDER BY timestamp DESC")
     fun getAllItems(): Maybe<List<ItemEntity>>
 
     @Query(value = "SELECT * FROM $TABLE_NAME WHERE id = :id")
