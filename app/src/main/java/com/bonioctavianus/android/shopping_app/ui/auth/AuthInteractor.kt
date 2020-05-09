@@ -17,6 +17,8 @@ class AuthInteractor @Inject constructor(
         return ObservableTransformer { intents ->
             intents.publish { shared ->
                 Observable.mergeArray(
+                    shared.ofType(AuthIntent.DoEmailSignIn::class.java)
+                        .compose(doEmailSignIn),
                     shared.ofType(AuthIntent.DoFacebookSignIn::class.java)
                         .compose(doFacebookSignIn),
                     shared.ofType(AuthIntent.DoGoogleSignIn::class.java)
@@ -24,16 +26,14 @@ class AuthInteractor @Inject constructor(
                     shared.ofType(AuthIntent.HandleFacebookSignInResult::class.java)
                         .compose(handleFacebookSignInResult),
                     shared.ofType(AuthIntent.HandleGoogleSignInResult::class.java)
-                        .compose(handleGoogleSignInResult),
-                    shared.ofType(AuthIntent.DoEmailSignIn::class.java)
-                        .compose(doEmailSignIn)
+                        .compose(handleGoogleSignInResult)
                 ).mergeWith(
                     shared.filter { intent ->
-                        intent !is AuthIntent.DoFacebookSignIn
+                        intent !is AuthIntent.DoEmailSignIn
+                                && intent !is AuthIntent.DoFacebookSignIn
                                 && intent !is AuthIntent.DoGoogleSignIn
                                 && intent !is AuthIntent.HandleFacebookSignInResult
                                 && intent !is AuthIntent.HandleGoogleSignInResult
-                                && intent !is AuthIntent.DoEmailSignIn
                     }.flatMap { intent ->
                         Observable.error<AuthViewState>(
                             IllegalArgumentException("Unknown intent type: $intent")
@@ -43,6 +43,26 @@ class AuthInteractor @Inject constructor(
             }
         }
     }
+
+    private val doEmailSignIn =
+        ObservableTransformer<AuthIntent.DoEmailSignIn, AuthViewState> { intents ->
+            intents.flatMap { intent ->
+                mDoEmailSignIn.signIn(intent.email, intent.password)
+                    .map { result ->
+                        when (result) {
+                            is Result.InFlight -> {
+                                AuthViewState.EmailSignIn.InFlight
+                            }
+                            is Result.Success<*> -> {
+                                AuthViewState.EmailSignIn.Success
+                            }
+                            is Result.Error -> {
+                                AuthViewState.EmailSignIn.Error(result.throwable)
+                            }
+                        }
+                    }
+            }
+        }
 
     private val doFacebookSignIn =
         ObservableTransformer<AuthIntent.DoFacebookSignIn, AuthViewState> { intents ->
@@ -57,26 +77,6 @@ class AuthInteractor @Inject constructor(
             intents.flatMap { intent ->
                 mDoGoogleSignIn.signIn(intent.fragment)
                     .map { AuthViewState.GoogleSignIn.InFlight }
-            }
-        }
-
-    private val handleGoogleSignInResult =
-        ObservableTransformer<AuthIntent.HandleGoogleSignInResult, AuthViewState> { intents ->
-            intents.flatMap { intent ->
-                mDoGoogleSignIn.handleSignInResult(intent.data)
-                    .map { result ->
-                        when (result) {
-                            is Result.InFlight -> {
-                                AuthViewState.GoogleSignIn.InFlight
-                            }
-                            is Result.Success<*> -> {
-                                AuthViewState.GoogleSignIn.Success
-                            }
-                            is Result.Error -> {
-                                AuthViewState.GoogleSignIn.Error(result.throwable)
-                            }
-                        }
-                    }
             }
         }
 
@@ -104,20 +104,20 @@ class AuthInteractor @Inject constructor(
             }
         }
 
-    private val doEmailSignIn =
-        ObservableTransformer<AuthIntent.DoEmailSignIn, AuthViewState> { intents ->
+    private val handleGoogleSignInResult =
+        ObservableTransformer<AuthIntent.HandleGoogleSignInResult, AuthViewState> { intents ->
             intents.flatMap { intent ->
-                mDoEmailSignIn.signIn(intent.email, intent.password)
+                mDoGoogleSignIn.handleSignInResult(intent.data)
                     .map { result ->
                         when (result) {
                             is Result.InFlight -> {
-                                AuthViewState.EmailSignIn.InFlight
+                                AuthViewState.GoogleSignIn.InFlight
                             }
                             is Result.Success<*> -> {
-                                AuthViewState.EmailSignIn.Success
+                                AuthViewState.GoogleSignIn.Success
                             }
                             is Result.Error -> {
-                                AuthViewState.EmailSignIn.Error(result.throwable)
+                                AuthViewState.GoogleSignIn.Error(result.throwable)
                             }
                         }
                     }
