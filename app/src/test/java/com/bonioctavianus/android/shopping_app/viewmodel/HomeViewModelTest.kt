@@ -156,7 +156,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `bindIntent() for SelectItem intent when throwing exception - should return ItemSelected state`() {
+    fun `bindIntent() for SelectItem intent - should return ItemSelected state`() {
         val item = mockk<Item>()
 
         val intent: Observable<HomeIntent> =
