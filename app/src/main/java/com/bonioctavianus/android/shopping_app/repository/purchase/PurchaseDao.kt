@@ -18,4 +18,7 @@ interface PurchaseDao {
 
     @Query(value = "SELECT * FROM $TABLE_NAME WHERE id = :id")
     fun getItem(id: Int): Maybe<ItemEntity>
+
+    @Query(value = "DELETE FROM $TABLE_NAME")
+    fun deleteAllItems(): Maybe<Int>
 }

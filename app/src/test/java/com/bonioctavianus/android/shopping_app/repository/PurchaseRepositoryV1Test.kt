@@ -81,4 +81,21 @@ class PurchaseRepositoryV1Test {
             mTransformer.transform(entity)
         }
     }
+
+    @Test
+    fun `deleteAllItems() - should return deleted items count`() {
+        val itemCount = 1
+
+        every { mService.deleteAllItems() } returns
+                Maybe.just(itemCount)
+
+        mRepository.deleteAllItems()
+            .test()
+            .assertResult(itemCount)
+            .dispose()
+
+        verify {
+            mService.deleteAllItems()
+        }
+    }
 }

@@ -6,6 +6,7 @@ interface PurchaseService {
     fun insert(item: ItemEntity): Maybe<Long>
     fun getAllItems(): Maybe<List<ItemEntity>>
     fun getItem(id: Int): Maybe<ItemEntity>
+    fun deleteAllItems(): Maybe<Int>
 }
 
 class PurchaseServiceV1(private val mDao: PurchaseDao) : PurchaseService {
@@ -20,5 +21,9 @@ class PurchaseServiceV1(private val mDao: PurchaseDao) : PurchaseService {
 
     override fun getItem(id: Int): Maybe<ItemEntity> {
         return mDao.getItem(id)
+    }
+
+    override fun deleteAllItems(): Maybe<Int> {
+        return mDao.deleteAllItems()
     }
 }

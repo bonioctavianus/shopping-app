@@ -7,6 +7,7 @@ interface PurchaseRepository {
     fun insert(item: Item): Maybe<Long>
     fun getAllItems(): Maybe<List<Item>>
     fun getItem(id: Int): Maybe<Item>
+    fun deleteAllItems(): Maybe<Int>
 }
 
 class PurchaseRepositoryV1(
@@ -28,5 +29,9 @@ class PurchaseRepositoryV1(
     override fun getItem(id: Int): Maybe<Item> {
         return mService.getItem(id)
             .map { entity -> mTransformer.transform(entity) }
+    }
+
+    override fun deleteAllItems(): Maybe<Int> {
+        return mService.deleteAllItems()
     }
 }

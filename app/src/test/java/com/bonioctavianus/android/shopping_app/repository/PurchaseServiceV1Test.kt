@@ -70,4 +70,21 @@ class PurchaseServiceV1Test {
             mDao.getItem(itemId)
         }
     }
+    
+    @Test
+    fun `deleteAllItems() - should return deleted items count`() {
+        val itemCount = 1
+
+        every { mDao.deleteAllItems() } returns
+                Maybe.just(itemCount)
+
+        mService.deleteAllItems()
+            .test()
+            .assertResult(itemCount)
+            .dispose()
+
+        verify {
+            mDao.deleteAllItems()
+        }
+    }
 }
